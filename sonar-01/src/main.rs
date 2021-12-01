@@ -1,4 +1,4 @@
-
+use std::fs;
 
 fn main() {
     let f = "sonar.input.txt";
@@ -20,7 +20,10 @@ fn count_depth_increases(depths: Vec<u64>) -> u64 {
 }
 
 fn read_depths_from_file(filename: &str) -> Vec<u64> {
-    todo!();
+    let contents = fs::read_to_string(filename)
+        .expect("error while reading file");
+
+    contents.split_whitespace().map(|s| s.parse().expect("parse error")).collect()
 }
 
 
